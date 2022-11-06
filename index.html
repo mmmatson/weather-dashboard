@@ -9,29 +9,26 @@
 </head>
 
 <body>
-    <!-- Start Top Bar -->
+    <!-- Header -->
     <header class="top-bar">
         <div class="row">
-            <h1 class="">Weather Dashboard</h1>
+            <h1>Weather Dashboard</h1>
         </div>
     </header>
-    <!-- End Top Bar -->
     <br>
-
-    <div class="row">
-        <!-- Search Form-->
+    <main class="row">
         <div class="medium-3 columns">
+            <!-- Search Form-->
             <form>
                 <h2>Search for a city:</h2>
-                <textarea placeholder="City, State"></textarea>
-                <button class="button expanded">Search</button>
+                <textarea id="city-input" placeholder="City, State"></textarea>
+                <button id="search-button" class="button expanded">Search</button>
             </form>
             <hr>
             <!-- Search history -->
-            <div>
+            <div id="history">
             </div>
         </div>
-        <!--Weather -->
         <div class="medium-9 columns">
             <!-- Current Weather -->
             <div class="row">
@@ -92,8 +89,7 @@
                 </div>
             </div>
         </div>
-    </div>
-    <br>
+    </main>
     <!-- Footer with attribution -->
     <hr>
     <footer class="row column">
