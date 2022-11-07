@@ -15,7 +15,7 @@ searchBtn.addEventListener('click', function (event) {
         historyContainer.appendChild(historyBtn);
         historyBtn.textContent = cityInput.value;
     }
-    fetch('http://api.openweathermap.org/geo/1.0/direct?q=' + cityInput.value + '&limit=1&appid=cc23144d939d4c97fd8e518be3041b20')
+    fetch('https://api.openweathermap.org/geo/1.0/direct?q=' + cityInput.value + '&limit=1&appid=cc23144d939d4c97fd8e518be3041b20')
         .then(function (responseGeo) {
             return responseGeo.json();
         })
@@ -25,7 +25,7 @@ searchBtn.addEventListener('click', function (event) {
                 var lon = (dataGeo[i].lon);
                 var lat = (dataGeo[i].lat);
                 var nameEl = (dataGeo[i].name);
-                fetch('http://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=cc23144d939d4c97fd8e518be3041b20&units=imperial')
+                fetch('https://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=cc23144d939d4c97fd8e518be3041b20&units=imperial')
                     .then(function (responseWeather) {
                         return responseWeather.json();
                     })
