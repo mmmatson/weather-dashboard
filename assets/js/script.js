@@ -33,6 +33,30 @@ fetch('http://api.openweathermap.org/geo/1.0/direct?q=' + 'Chicago' + '&limit=1&
                     temparature.textContent = "Temp: " + dataWeather.list[0].main.temp;
                     wind.textContent = "Wind: " + dataWeather.list[0].wind.speed;
                     humidity.textContent = "Humidity: " + dataWeather.list[0].main.humidity;
+                    for (var i = 0; i < dataWeather.list.length; i++) {
+                        if (i===7 || i===15|| i===23|| i===31|| i===39) {
+                        var forecastContainer = document.createElement('div');
+                        var forecastCard = document.createElement('div');
+                        var dateForecast = document.createElement('p');
+                        var iconForecast = document.createElement('i');
+                        var temparatureForecast = document.createElement('p');
+                        var windForecast = document.createElement('p');
+                        var humidityForecast = document.createElement('p');
+                        forecastContainer.setAttribute('class', "column")
+                        forecastCard.setAttribute('class', "callout primary")
+                        forecast.appendChild(forecastContainer);
+                        forecastContainer.appendChild(forecastCard);
+                        forecastCard.appendChild(dateForecast);
+                        forecastCard.appendChild(iconForecast);
+                        forecastCard.appendChild(temparatureForecast);
+                        forecastCard.appendChild(windForecast);
+                        forecastCard.appendChild(humidityForecast);
+                        dateForecast.textContent = dataWeather.list[i].dt_txt;
+                        iconForecast.textContent = dataWeather.list[i].weather.icon;
+                        temparatureForecast.textContent = "Temp: " + dataWeather.list[i].main.temp;
+                        windForecast.textContent = "Wind: " + dataWeather.list[i].wind.speed;
+                        humidityForecast.textContent = "Humidity: " + dataWeather.list[i].main.humidity;}
+                    }
                 })
 
         }
