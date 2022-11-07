@@ -15,7 +15,7 @@ fetch('http://api.openweathermap.org/geo/1.0/direct?q=' + 'Chicago' + '&limit=1&
             var lon = (dataGeo[i].lon);
             var lat = (dataGeo[i].lat);
             var nameEl = (dataGeo[i].name);
-            fetch('http://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=cc23144d939d4c97fd8e518be3041b20')
+            fetch('http://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon=' + lon + '&appid=cc23144d939d4c97fd8e518be3041b20&units=imperial')
                 .then(function (responseWeather) {
                     return responseWeather.json();
                 })
@@ -30,10 +30,11 @@ fetch('http://api.openweathermap.org/geo/1.0/direct?q=' + 'Chicago' + '&limit=1&
                     currentWeather.appendChild(wind)
                     currentWeather.appendChild(humidity)
                     icon.textContent = dataWeather.list[0].weather.icon;
-                    temparature.textContent = "Temp: " + dataWeather.list[0].main.temp;
-                    wind.textContent = "Wind: " + dataWeather.list[0].wind.speed;
-                    humidity.textContent = "Humidity: " + dataWeather.list[0].main.humidity;
+                    temparature.textContent = "Temp: " + dataWeather.list[0].main.temp +"\u00B0 F";
+                    wind.textContent = "Wind: " + dataWeather.list[0].wind.speed + "mph";
+                    humidity.textContent = "Humidity: " + dataWeather.list[0].main.humidity +"%";
                     for (var i = 0; i < dataWeather.list.length; i++) {
+                        //Only append elements for these items in the array to get 5 day forecast
                         if (i===7 || i===15|| i===23|| i===31|| i===39) {
                         var forecastContainer = document.createElement('div');
                         var forecastCard = document.createElement('div');
@@ -53,9 +54,10 @@ fetch('http://api.openweathermap.org/geo/1.0/direct?q=' + 'Chicago' + '&limit=1&
                         forecastCard.appendChild(humidityForecast);
                         dateForecast.textContent = dataWeather.list[i].dt_txt;
                         iconForecast.textContent = dataWeather.list[i].weather.icon;
-                        temparatureForecast.textContent = "Temp: " + dataWeather.list[i].main.temp;
+                        temparatureForecast.textContent = "Temp: " + dataWeather.list[i].main.temp +"\u00B0 F";
                         windForecast.textContent = "Wind: " + dataWeather.list[i].wind.speed;
-                        humidityForecast.textContent = "Humidity: " + dataWeather.list[i].main.humidity;}
+                        humidityForecast.textContent = "Humidity: " + dataWeather.list[i].main.humidity +"%";
+                    }
                     }
                 })
 
